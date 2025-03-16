@@ -15,3 +15,54 @@ async function fetchGames() {
 }
 
 fetchGames();
+// Fetch data từ API hoặc mẫu data
+const gamesList = document.getElementById('games-list');
+const searchInput = document.getElementById('searchInput');
+
+// Dữ liệu mẫu (bạn có thể thay bằng API)
+const gamesData = [
+    { home_team: "Lakers", visitor_team: "Warriors", date: "2024-04-15" },
+    { home_team: "Celtics", visitor_team: "Bulls", date: "2024-04-16" },
+    { home_team: "Heat", visitor_team: "Nets", date: "2024-04-17" },
+    { home_team: "Suns", visitor_team: "Knicks", date: "2024-04-18" }
+];
+
+// Hàm hiển thị danh sách games
+function displayGames(games) {
+    gamesList.innerHTML = ""; // Xóa danh sách cũ
+
+    if (games.length === 0) {
+        gamesList.innerHTML = "<p>No games found.</p>";
+        return;
+    }
+
+    games.forEach(game => {
+        const gameCard = document.createElement('div');
+        gameCard.classList.add('card');
+        gameCard.innerHTML = `
+            <h3>${game.home_team} vs ${game.visitor_team}</h3>
+            <p>Date: ${game.date}</p>
+        `;
+        gamesList.appendChild(gameCard);
+    });
+}
+
+// Hàm tìm kiếm games
+function searchGames(keyword) {
+    const filteredGames = gamesData.filter(game =>
+        game.home_team.toLowerCase().includes(keyword) ||
+        game.visitor_team.toLowerCase().includes(keyword) ||
+        game.date.includes(keyword)
+    );
+    displayGames(filteredGames);
+}
+
+// Sự kiện nhập vào thanh search
+searchInput.addEventListener('input', (e) => {
+    const keyword = e.target.value.trim().toLowerCase();
+    searchGames(keyword);
+});
+
+// Hiển thị toàn bộ games khi load trang
+displayGames(gamesData);
+

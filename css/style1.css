@@ -1,40 +1,229 @@
-body {
-    font-family: Arial, sans-serif;
+/* ==== Reset CSS ==== */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-h1 {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
+/* ==== Body General ==== */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==== Header/Navbar ==== */
+header {
+    background-color: #1d428a;
     color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.card {
-    background-color: #f1f1f1;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
+/* Logo + Title */
+header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+header .logo {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-left: 10px;
     text-align: center;
+    flex: 1;
+}
+
+/* Navbar menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==== Main content ==== */
+main {
+    flex: 1;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Title sections */
+h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #c9082a;
+    text-align: center;
+}
+
+/* ==== Search Box ==== */
+.search-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    padding: 12px 20px;
+    border: 2px solid #1d428a;
+    border-radius: 25px;
+    font-size: 1rem;
+    display: block;
+    transition: all 0.3s;
+}
+
+.search-box:focus {
+    border-color: #c9082a;
+    box-shadow: 0 0 8px rgba(201, 8, 42, 0.5);
+    outline: none;
+}
+
+/* ==== Container for Cards ==== */
+#teams-container,
+#players-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* ==== Card Style ==== */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
-    font-size: 20px;
-    margin: 10px 0;
+    color: #1d428a;
+    margin-bottom: 10px;
 }
 
 .card p {
-    font-size: 16px;
-    margin: 5px 0;
+    color: #555;
+    font-size: 0.95rem;
 }
 
-#players-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* ==== Logo Small for Card (Optional for team logos) ==== */
+.team-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* ==== Footer ==== */
+footer {
+    background-color: #1d428a;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* ==== Responsive Adjustments ==== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.4rem;
+        margin: 10px 0;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    .search-box {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+/* ==== Card Style ==== */
+.card {
+    background: white;
     padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    
+    /* NEW: Fix height and center content */
+    min-height: 150px; /* Chiều cao tối thiểu cho card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word; /* Tự động xuống dòng khi dài */
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Tên cầu thủ (hoặc team) */
+.card h3 {
+    color: #1d428a;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    max-width: 90%; /* Giới hạn độ rộng chữ để không tràn */
+    word-wrap: break-word; /* Tự động xuống dòng */
+}
+
+/* Thông tin thêm (ví dụ vị trí, đội) */
+.card p {
+    color: #555;
+    font-size: 0.95rem;
+    margin: 0;
 }
