@@ -55,6 +55,7 @@ body {
 /* Button */
 .btn {
     width: 100%;
+    margin-top: 36px;
     padding: 12px;
     border: none;
     background: #1d428a;
@@ -91,7 +92,7 @@ a:hover {
 }
 
 .message {
-    margin-top: 15px;
+    margin-top: 25px;
     font-size: 14px;
     color: #ffcc00;
 }

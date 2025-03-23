@@ -47,7 +47,6 @@ function displayTeams(teams) {
         const teamElement = document.createElement('div');
         teamElement.classList.add('team');
         teamElement.innerHTML = `
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_of_the_NBA.png" alt="${team.full_name}">
             <h3>${team.full_name}</h3>
             <p>${team.city}</p>
         `;

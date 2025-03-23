@@ -1,4 +1,4 @@
-// Toggle Hiện/Ẩn mật khẩu
+// =================== TOGGLE HIỆN/ẨN MẬT KHẨU ===================
 document.querySelectorAll('.toggle-password').forEach(toggle => {
     toggle.addEventListener('click', function () {
         const input = this.previousElementSibling;
@@ -8,70 +8,74 @@ document.querySelectorAll('.toggle-password').forEach(toggle => {
     });
 });
 
-// Xử lý đăng ký
-const signupForm = document.getElementById('signup-form');
-if (signupForm) {
-    signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+// =================== ĐĂNG KÝ TÀI KHOẢN ===================
+document.getElementById("signup-form")?.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        const username = document.getElementById('signup-username').value.trim();
-        const password = document.getElementById('signup-password').value.trim();
+    const username = document.getElementById("signup-username").value.trim();
+    const password = document.getElementById("signup-password").value.trim();
+    const avatarInput = document.getElementById("signup-avatar")?.value.trim();
 
-        let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
-        const existUser = accounts.find(acc => acc.username === username);
-        if (existUser) {
-            alert('Username already exists!');
-            return;
-        }
+    // Kiểm tra nếu username đã tồn tại
+    if (accounts.some(acc => acc.username === username)) {
+        alert("Username đã tồn tại, vui lòng chọn username khác!");
+        return;
+    }
 
-        const newUser = { username, password, avatar: "https://via.placeholder.com/40" }; // Avatar mặc định
-        accounts.push(newUser);
-        localStorage.setItem('accounts', JSON.stringify(accounts));
-        alert('Registration successful! Please log in.');
-        window.location.href = 'signin.html'; // Chuyển sang đăng nhập
-    });
-}
+    // Nếu không có avatar, đặt avatar mặc định
+    const avatar = avatarInput || "https://via.placeholder.com/40";
 
-// Xử lý đăng nhập
-const signinForm = document.getElementById('login-form');
-if (signinForm) {
-    signinForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Lưu tài khoản vào localStorage
+    accounts.push({ username, password, avatar });
+    localStorage.setItem("accounts", JSON.stringify(accounts));
 
-        const username = document.getElementById('signin-username').value.trim();
-        const password = document.getElementById('signin-password').value.trim();
+    alert("Đăng ký thành công! Chuyển đến trang đăng nhập...");
+    window.location.href = "signin.html"; // Kiểm tra đường dẫn trang đăng nhập
+});
 
-        const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        const user = accounts.find(acc => acc.username === username && acc.password === password);
+// =================== ĐĂNG NHẬP TÀI KHOẢN ===================
+document.getElementById("login-form")?.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        if (user) {
-            alert('Login successful!');
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('user', JSON.stringify(user));
-            window.location.href = 'index.html'; // Chuyển về Home
-        } else {
-            alert('Incorrect username or password!');
-        }
-    });
-}
-// Kiểm tra đăng nhập và cập nhật avatar
-document.addEventListener('DOMContentLoaded', () => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const avatarImg = document.getElementById('avatar-img');
-    const userAvatarDiv = document.getElementById('user-avatar');
-    const authLinksDiv = document.getElementById('auth-links');
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value.trim();
 
-    if (currentUser) {
-        // Nếu đã đăng nhập, hiển thị avatar
-        avatarImg.src = currentUser.avatar;
-        userAvatarDiv.style.display = 'block';
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const user = accounts.find(acc => acc.username === username && acc.password === password);
 
-        // Ẩn nút Sign In / Sign Up
-        authLinksDiv.style.display = 'none';
+    if (user) {
+        // Lưu tài khoản đăng nhập vào localStorage
+        localStorage.setItem("currentUser", JSON.stringify(user));
+
+        alert("Đăng nhập thành công!");
+        window.location.href = "home.html"; // Kiểm tra đường dẫn trang Home
     } else {
-        // Nếu chưa đăng nhập, ẩn avatar và hiện Sign In / Sign Up
-        userAvatarDiv.style.display = 'none';
-        authLinksDiv.style.display = 'block';
+        alert("Sai tài khoản hoặc mật khẩu!");
+    }
+});
+
+// =================== HIỂN THỊ AVATAR TRÊN NAVBAR ===================
+window.addEventListener("load", function () {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (user) {
+        const avatarImg = document.createElement("img");
+        avatarImg.src = user.avatar;
+        avatarImg.alt = "Avatar";
+        avatarImg.style.width = "40px";
+        avatarImg.style.height = "40px";
+        avatarImg.style.borderRadius = "50%";
+        avatarImg.style.objectFit = "cover";
+        avatarImg.style.marginLeft = "10px";
+
+        const navbar = document.querySelector(".navbar") || document.getElementById("navbar");
+
+        if (navbar) {
+            navbar.appendChild(avatarImg);
+        } else {
+            console.error("Navbar không tìm thấy! Hãy kiểm tra HTML.");
+        }
     }
 });

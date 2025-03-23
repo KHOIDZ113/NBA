@@ -1,231 +1,149 @@
-/* Reset */
-* {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #f4f4f4;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1d428a, #17408b);
-    color: #fff;
-    min-height: 100vh;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-/* Navbar */
+/* Navbar Styles */
 .navbar {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #1d428a;
+    padding: 10px 20px;
 }
 
 .navbar a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    margin: 0 15px;
     padding: 10px 15px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 .navbar a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: #c8102e;
+    border-radius: 5px;
 }
 
-#auth-area a {
-    background: #1d428a;
-    margin-left: 10px;
-}
-
-#auth-area a:hover {
-    background: #17408b;
-}
-
-/* Header */
-.header {
-    text-align: center;
-    padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.header h1 {
-    font-size: 48px;
-    margin: 0;
-}
-
-/* Header flex */
-.header-flex {
+/* Auth Button Styles */
+.auth-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.logo {
-    width: 100px;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.1);
-}
-
-/* Main content */
-.main-content {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.main-content h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.main-content p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* Avatar */
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .header h1 {
-        font-size: 36px;
-    }
-
-    .main-content h2 {
-        font-size: 28px;
-    }
-}
-/* Avatar */
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-#logout-btn {
-    background: #ff4d4d;
-    color: white;
-    padding: 6px 12px;
-    border: none;
+.auth-links a {
+    padding: 8px 15px;
     border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-login {
+    background-color: white;
+    color: #1d428a;
+    border: 2px solid #1d428a;
+}
+
+.btn-login:hover {
+    background-color: #1d428a;
+    color: white;
+}
+
+.btn-signup {
+    background-color: #c8102e;
+    color: white;
+    border: 2px solid #c8102e;
+}
+
+.btn-signup:hover {
+    background-color: white;
+    color: #c8102e;
+}
+
+/* User Avatar Styles */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
     cursor: pointer;
 }
- /* Cấu hình cho toàn bộ body để căn giữa logo */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    height: 100vh; /* Chiều cao toàn màn hình */
-    display: flex;
-    flex-direction: column;
-}
 
-/* Navbar căn đều và đẹp */
-.navbar {
-    background-color: #0e2240;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-}
-
-/* Link trên navbar */
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    transition: 0.3s;
-    background-color: #1d428a;
-}
-
-.navbar a:hover {
-    background-color: #17408b;
-}
-
-/* Avatar */
 .user-avatar img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 2px solid white;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-.user-avatar {
-    margin-left: auto; /* Đẩy avatar về bên phải */
+/* NBA Logo */
+.nba-logo img {
+    width: 150px;
+    margin: 20px auto;
 }
 
-/* Đăng nhập/đăng ký */
-.auth-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
-    padding: 8px 16px;
-    background-color: #1d428a;
-    border-radius: 20px;
-    transition: 0.3s;
+/* Latest News Section */
+.latest-news {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
 }
 
-.auth-links a:hover {
-    background-color: #17408b;
+.latest-news h2 {
+    color: #1d428a;
 }
 
-/* Logo chính giữa toàn màn hình */
-.NBA {
-    flex: 1; /* Chiếm hết phần còn lại của màn hình */
+.news-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
-/* Kích thước logo đẹp và responsive */
-.NBA img {
-    max-width: 100%; /* Không vượt quá chiều rộng màn hình */
-    max-height: 80vh; /* Không vượt quá 80% chiều cao màn hình */
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.2)); /* Đổ bóng nhẹ */
-}
-.NBA img {
-    transition: transform 0.3s ease;
+.news-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
 }
 
-.NBA img:hover {
-    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+.news-card:hover {
+    transform: scale(1.05);
+}
+
+.news-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.news-card p {
+    font-size: 16px;
+    color: #333;
 }
 
