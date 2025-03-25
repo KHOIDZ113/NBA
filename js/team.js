@@ -12,59 +12,71 @@ const searchPlayerInput = document.getElementById('search-player');
 let teamsList = [];
 function fetchTeams() {
     fetch('https://api.balldontlie.io/v1/teams', {
-        headers: {
-            'Authorization': apiKey
-        }
+        headers: { 'Authorization': apiKey }
     })
-        .then(response => response.json())
-        .then(data => {
-            teamsList = data.data;
-            displayTeams(teamsList);  // Hiển thị danh sách đội ban đầu
-        })
-        .catch(error => console.error('Error fetching teams:', error));
+    .then(response => response.json())
+    .then(data => {
+        teamsList = data.data;
+        displayTeams(teamsList);
+    })
+    .catch(error => console.error('Error fetching teams:', error));
 }
 
 // Lấy danh sách cầu thủ
 let playersList = [];
 function fetchPlayers() {
     fetch('https://api.balldontlie.io/v1/players', {
-        headers: {
-            'Authorization': apiKey
-        }
+        headers: { 'Authorization': apiKey }
     })
-        .then(response => response.json())
-        .then(data => {
-            playersList = data.data;
-            displayPlayers(playersList);  // Hiển thị danh sách cầu thủ ban đầu
-        })
-        .catch(error => console.error('Error fetching players:', error));
+    .then(response => response.json())
+    .then(data => {
+        playersList = data.data;
+        displayPlayers(playersList);
+    })
+    .catch(error => console.error('Error fetching players:', error));
 }
 
-// Hiển thị đội bóng
+// Hiển thị đội bóng bằng nút và đầy đủ thông tin khi bấm vào
 function displayTeams(teams) {
-    teamsContainer.innerHTML = '';  // Clear previous content
+    teamsContainer.innerHTML = ''; 
     teams.forEach(team => {
-        const teamElement = document.createElement('div');
-        teamElement.classList.add('team');
-        teamElement.innerHTML = `
-            <h3>${team.full_name}</h3>
-            <p>${team.city}</p>
-        `;
+        const teamElement = document.createElement('button');
+        teamElement.classList.add('team-button');
+        teamElement.textContent = team.full_name;
+        
+        teamElement.addEventListener('click', () => {
+            alert(`
+                🏀 Đội: ${team.full_name}
+                📍 Thành phố: ${team.city}
+                🏆 Tên viết tắt: ${team.abbreviation}
+                🎯 Hội nghị: ${team.conference}
+                🌍 Khu vực: ${team.division}
+            `);
+        });
+
         teamsContainer.appendChild(teamElement);
     });
 }
 
-// Hiển thị cầu thủ
+// Hiển thị cầu thủ bằng nút và đầy đủ thông tin khi bấm vào
 function displayPlayers(players) {
-    playersContainer.innerHTML = '';  // Clear previous content
+    playersContainer.innerHTML = '';  
     players.forEach(player => {
-        const playerElement = document.createElement('div');
-        playerElement.classList.add('player');
-        playerElement.innerHTML = `
-            <img src="https://via.placeholder.com/150" alt="${player.first_name} ${player.last_name}">
-            <h3>${player.first_name} ${player.last_name}</h3>
-            <p>${player.team.full_name}</p>
-        `;
+        const playerElement = document.createElement('button');
+        playerElement.classList.add('player-button');
+        playerElement.textContent = `${player.first_name} ${player.last_name}`;
+        
+        playerElement.addEventListener('click', () => {
+            alert(`
+                👤 Cầu thủ: ${player.first_name} ${player.last_name}
+                🏀 Đội: ${player.team.full_name}
+                📏 Chiều cao: ${player.height_feet ? player.height_feet + "'" : "N/A"} ${player.height_inches ? player.height_inches + '"' : ""}
+                ⚖️ Cân nặng: ${player.weight_pounds ? player.weight_pounds + " lbs" : "N/A"}
+                🔢 Số áo: ${player.jersey_number || "N/A"}
+                🏅 Vị trí: ${player.position || "N/A"}
+            `);
+        });
+
         playersContainer.appendChild(playerElement);
     });
 }
@@ -110,8 +122,3 @@ window.onload = () => {
     playersSection.style.display = 'none';
     showTeamsBtn.classList.add('active');
 };
-const teamCard = document.createElement('div');
-teamCard.className = 'card';
-teamCard.innerHTML = `<h3>${team.full_name}</h3><p>City: ${team.city}</p>`;
-document.getElementById('teams-container').appendChild(teamCard);
-
