@@ -1,11 +1,37 @@
-// =================== TOGGLE HIỆN/ẨN MẬT KHẨU ===================
-document.querySelectorAll('.toggle-password').forEach(toggle => {
-    toggle.addEventListener('click', function () {
-        const input = this.previousElementSibling;
-        input.type = input.type === 'password' ? 'text' : 'password';
-        this.textContent = input.type === 'password' ? '👁️' : '🙈';
-    });
-});
+// =================== CẬP NHẬT NAVBAR VỚI AVATAR ===================
+function updateNavbar() {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    const loginBtn = document.getElementById("login-btn");
+    const signupBtn = document.getElementById("signup-btn");
+    const navbar = document.getElementById("navbar");
+
+    if (user && navbar) {
+        if (loginBtn) loginBtn.style.display = "none";
+        if (signupBtn) signupBtn.style.display = "none";
+
+        // Xóa avatar cũ (nếu có) để tránh chèn nhiều lần
+        document.getElementById("user-avatar")?.remove();
+
+        // Tạo avatar
+        const avatarImg = document.createElement("img");
+        avatarImg.id = "user-avatar";
+        avatarImg.src = user.avatar;
+        avatarImg.alt = "Avatar";
+        avatarImg.style.cssText = `
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 10px;
+            cursor: pointer;
+        `;
+
+        // Thêm tooltip hiển thị username khi hover
+        avatarImg.title = `Xin chào, ${user.username}!`;
+
+        navbar.appendChild(avatarImg);
+    }
+}
 
 // =================== ĐĂNG KÝ TÀI KHOẢN ===================
 document.getElementById("signup-form")?.addEventListener("submit", function (e) {
@@ -45,33 +71,11 @@ document.getElementById("login-form")?.addEventListener("submit", function (e) {
         localStorage.setItem("currentUser", JSON.stringify(user));
 
         alert("Đăng nhập thành công!");
-        window.location.href = "index.html";
+        window.location.href = "index.html";  // Chuyển về trang chính
     } else {
         alert("Sai tài khoản hoặc mật khẩu!");
     }
 });
 
-// =================== HIỂN THỊ AVATAR VÀ ẨN NÚT ĐĂNG NHẬP ===================
-window.addEventListener("load", function () {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    const loginBtn = document.getElementById("login-btn");
-    const signupBtn = document.getElementById("signup-btn");
-    const navbar = document.getElementById("navbar");
-
-    if (user) {
-        if (loginBtn) loginBtn.style.display = "none";
-        if (signupBtn) signupBtn.style.display = "none";
-
-        const avatarImg = document.createElement("img");
-        avatarImg.src = user.avatar;
-        avatarImg.alt = "Avatar";
-        avatarImg.style.width = "40px";
-        avatarImg.style.height = "40px";
-        avatarImg.style.borderRadius = "50%";
-        avatarImg.style.objectFit = "cover";
-        avatarImg.style.marginLeft = "10px";
-        avatarImg.style.cursor = "pointer";
-
-        navbar.appendChild(avatarImg);
-    }
-});
+// =================== GỌI HÀM CẬP NHẬT NAVBAR KHI LOAD TRANG ===================
+window.addEventListener("load", updateNavbar);
