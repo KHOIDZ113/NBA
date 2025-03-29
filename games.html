@@ -4,30 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Games</title>
-    <link rel="stylesheet" href="./css/style3.css">
+    <link rel="stylesheet" href="./css/gamestyle.css">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="navbar" id="navbar">
+=======
+    <nav class="navbar">
+>>>>>>> 5d3cfee (NBA)
         <a href="./index.html">Home</a>
         <a href="./team&players.html">Teams</a>
-        <a href="/team&players.html">Players</a>
-        <a href="./games.html">Games</a>
+        <a href="./team&players.html">Players</a>
+        <a href="./games.html" class="active">Games</a>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search games...">
         </div>
-    </div>
+    </nav>
 
-    <!-- Header có logo và tiêu đề -->
-    <div class="header header-flex">
+    <!-- Header -->
+    <header class="header header-flex">
         <a href="./index.html">
             <img src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png" alt="NBA Logo" class="logo">
         </a>
         <h1>NBA Games</h1>
-    </div>
+    </header>
 
-    <div class="games" id="games-list"></div>
+    <!-- Danh sách games -->
+    <main>
+        <section class="games-container">
+            <h2>Upcoming & Recent Games</h2>
+            <div id="games-list" class="games-list"></div>
+        </section>
+    </main>
+    
     <script src="./js/games.js"></script>
-    
-    
 </body>
 </html>

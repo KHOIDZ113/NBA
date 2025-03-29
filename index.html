@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Home</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/auth.js" defer></script>
+    <title>NBA News</title>
+    <link rel="stylesheet" href="./css/indexsyle.css">
 </head>
-
 <body>
     <!-- Navbar -->
+<<<<<<< HEAD
     <div class="navbar" id="navbar">
         <a href="./index.html">Home</a>
         <a href="./team&players.html">Teams</a>
@@ -20,46 +18,49 @@
         <!-- User Avatar (After Login) -->
         <div class="user-avatar" id="user-avatar" style="display: none;">
             <img src="" alt="Avatar" id="avatar-img">
+=======
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./team&players.html">Teams & Players</a>
+            <a href="./games.html">Games</a>
+>>>>>>> 5d3cfee (NBA)
         </div>
-
-        <!-- Auth Links (Before Login) -->
-        <div class="auth-links" id="auth-links">
-            <a href="./login.html" class="btn-login">Log In</a>
-            <a href="./signup.html" class="btn-signup">Sign Up</a>
+        <!-- Khu vực đăng nhập hoặc avatar -->
+        <div class="auth-area">
+            <div id="auth-links">
+                <a href="./login.html" class="auth-btn">Login</a>
+                <a href="./signup.html" class="auth-btn">Signup</a>
+            </div>
+            <div id="user-info" class="user-avatar" style="display: none;">
+                <img id="user-avatar-img" src="" alt="User Avatar">
+                <span id="user-name"></span>
+                <button id="logout-btn">Logout</button>
+            </div>
         </div>
     </div>
 
-    <!-- NBA Logo -->
+    <!-- Logo -->
     <div class="nba-logo">
-        <img src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png" alt="NBA">
+        <img src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png" alt="NBA Logo" class="logo">
     </div>
 
-    <!-- Latest NBA News -->
+    <!-- Tin tức mới nhất -->
     <section class="latest-news">
-        <h2>Latest NBA News</h2>
-        <ul id="news-list">
-            <li>Loading latest news...</li>
-        </ul>
-
-        <!-- Hottest News Section -->
-        <h2>Hottest News</h2>
-        <div class="news-container">
-            <div class="news-card">
-                <img src="https://cdnmedia.webthethao.vn/uploads/2025-02-06/bom-tan-nba-jimmy-butler-stephen-curry-golden-state-warriors-1.jpg" alt="News Image 1">
-                <p>Catch up on last night's game highlights with thrilling moments and top plays.</p>
-            </div>
-            <div class="news-card">
-                <img src="https://hoopshype.com/wp-content/uploads/sites/92/2025/02/Luka_-AD_Trade.png?w=1000&h=600&crop=1" alt="News Image 2">
-                <p>Discover who dominated the court and took home the honors this week.</p>
-            </div>
-            <div class="news-card">
-                <img src="https://assets-cms.thescore.com/uploads/image/file/755279/w768xh576_GettyImages-2183937826.jpg?ts=1731554129" alt="News Image 3">
-                <p>Stay updated with the latest injury reports from across the league.</p>
-            </div>
-        </div>
+        <h2>Tin tức NBA mới nhất</h2>
+        <div id="news-list"></div>
     </section>
 
-    
-</body>
+    <!-- Modal hiển thị tin tức -->
+    <div id="news-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="News Image">
+            <p id="modal-description"></p>
+        </div>
+    </div>
 
+    <script src="./js/index.js"></script>
+</body>
 </html>

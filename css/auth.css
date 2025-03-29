@@ -1,139 +1,81 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #1d428a, #17408b);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-/* Form Container */
+/* Định dạng chung cho form đăng nhập và đăng ký */
 .auth-container {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 30px;
-    border-radius: 15px;
-    width: 370px;
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .auth-container h2 {
     margin-bottom: 20px;
-    font-size: 32px;
+    color: #333;
 }
 
-/* Inputs */
+/* Nhóm input */
 .input-group {
-    position: relative;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
     text-align: left;
+    margin-bottom: 15px;
 }
 
 .input-group label {
-    display: block;
-    margin-bottom: 8px;
     font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .input-group input {
-    width: 100%;
-    padding: 12px;
-    padding-right: 40px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-/* Button */
-.btn {
-    width: 100%;
-    margin-top: 36px;
-    padding: 12px;
-    border: none;
-    background: #1d428a;
-    color: white;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+/* Nút ẩn/hiện mật khẩu */
+.password-group {
+    position: relative;
 }
 
-.btn:hover {
-    background: #17408b;
-}
-
-/* Toggle Password */
 .toggle-password {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px;
-    user-select: none;
 }
 
-/* Link */
-a {
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.message {
-    margin-top: 25px;
-    font-size: 14px;
-    color: #ffcc00;
-}
-/* Avatar người dùng */
-.user-avatar img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* Tròn viền */
-    object-fit: cover;
-    border: 2px solid white;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Căn giữa avatar trên navbar */
-.user-avatar {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Đẩy avatar sang bên phải */
-}
-
-/* Đăng nhập / Đăng ký */
-.auth-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
-    padding: 8px 16px;
-    background-color: #1d428a;
-    border-radius: 20px;
+/* Nút đăng nhập, đăng ký */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
     transition: 0.3s;
 }
 
-.auth-links a:hover {
-    background-color: #17408b;
+.btn:hover {
+    background: #0056b3;
 }
 
-/* Navbar căn đều các phần */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 15px 30px;
-    background-color: #0e2240;
-    gap: 20px;
+/* Liên kết chuyển đổi giữa đăng nhập & đăng ký */
+.message {
+    margin-top: 15px;
+}
+
+.message a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.message a:hover {
+    text-decoration: underline;
 }

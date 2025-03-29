@@ -1,81 +1,101 @@
-// =================== CẬP NHẬT NAVBAR VỚI AVATAR ===================
-function updateNavbar() {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    const loginBtn = document.getElementById("login-btn");
-    const signupBtn = document.getElementById("signup-btn");
-    const navbar = document.getElementById("navbar");
+document.addEventListener("DOMContentLoaded", () => {
+    // Xử lý đăng ký
+    const signupForm = document.getElementById("signup-form");
+    if (signupForm) {
+        signupForm.addEventListener("submit", (event) => {
+            event.preventDefault();
 
-    if (user && navbar) {
-        if (loginBtn) loginBtn.style.display = "none";
-        if (signupBtn) signupBtn.style.display = "none";
+            const username = document.getElementById("signup-username").value.trim();
+            const password = document.getElementById("signup-password").value.trim();
+            const avatar = document.getElementById("signup-avatar").value.trim() || "https://heucollege.edu.vn/upload/2025/02/hinh-avatar-hoat-hinh-003.webp";
 
-        // Xóa avatar cũ (nếu có) để tránh chèn nhiều lần
-        document.getElementById("user-avatar")?.remove();
+            if (username && password) {
+                const user = { username, password, avatar };
+                localStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("isLoggedIn", "true");
 
-        // Tạo avatar
-        const avatarImg = document.createElement("img");
-        avatarImg.id = "user-avatar";
-        avatarImg.src = user.avatar;
-        avatarImg.alt = "Avatar";
-        avatarImg.style.cssText = `
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-left: 10px;
-            cursor: pointer;
-        `;
-
-        // Thêm tooltip hiển thị username khi hover
-        avatarImg.title = `Xin chào, ${user.username}!`;
-
-        navbar.appendChild(avatarImg);
-    }
-}
-
-// =================== ĐĂNG KÝ TÀI KHOẢN ===================
-document.getElementById("signup-form")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const username = document.getElementById("signup-username").value.trim();
-    const password = document.getElementById("signup-password").value.trim();
-    const avatarInput = document.getElementById("signup-avatar")?.value.trim();
-
-    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-
-    if (accounts.some(acc => acc.username === username)) {
-        alert("Username đã tồn tại, vui lòng chọn username khác!");
-        return;
+                alert("Đăng ký thành công! Đang chuyển về trang chủ...");
+                window.location.href = "index.html";
+            }
+        });
     }
 
-    const avatar = avatarInput || "https://via.placeholder.com/40";
+    // Xử lý đăng nhập
+    const loginForm = document.getElementById("login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (event) => {
+            event.preventDefault();
 
-    accounts.push({ username, password, avatar });
-    localStorage.setItem("accounts", JSON.stringify(accounts));
+            const username = document.getElementById("login-username").value.trim();
+            const password = document.getElementById("login-password").value.trim();
+            const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    alert("Đăng ký thành công! Chuyển đến trang đăng nhập...");
-    window.location.href = "login.html";
+            if (storedUser && username === storedUser.username && password === storedUser.password) {
+                localStorage.setItem("isLoggedIn", "true");
+
+                alert("Đăng nhập thành công! Đang chuyển về trang chủ...");
+                window.location.href = "index.html";
+            } else {
+                alert("Sai tài khoản hoặc mật khẩu!");
+            }
+        });
+    }
+
+    // Ẩn/hiện mật khẩu
+    document.querySelectorAll(".toggle-password").forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+            const passwordInput = toggle.previousElementSibling;
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggle.textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                toggle.textContent = "👁️";
+            }
+        });
+    });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
 
-// =================== ĐĂNG NHẬP TÀI KHOẢN ===================
-document.getElementById("login-form")?.addEventListener("submit", function (e) {
-    e.preventDefault();
+    // Xử lý nút ẩn/hiện mật khẩu
+    document.querySelectorAll(".toggle-password").forEach(toggle => {
+        toggle.addEventListener("click", () => {
+            const passwordInput = toggle.previousElementSibling;
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        });
+    });
 
-    const username = document.getElementById("login-username").value.trim();
-    const password = document.getElementById("login-password").value.trim();
+    // Xử lý đăng ký
+    if (signupForm) {
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("signup-username").value;
+            const password = document.getElementById("signup-password").value;
+            const avatar = document.getElementById("signup-avatar").value || 
+                "https://heucollege.edu.vn/upload/2025/02/hinh-avatar-hoat-hinh-003.webp";
 
-    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    const user = accounts.find(acc => acc.username === username && acc.password === password);
+            localStorage.setItem("user", JSON.stringify({ username, password, avatar }));
+            alert("Đăng ký thành công! Hãy đăng nhập.");
+            window.location.href = "login.html";
+        });
+    }
 
-    if (user) {
-        localStorage.setItem("currentUser", JSON.stringify(user));
+    // Xử lý đăng nhập
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+            const user = JSON.parse(localStorage.getItem("user"));
 
-        alert("Đăng nhập thành công!");
-        window.location.href = "index.html";  // Chuyển về trang chính
-    } else {
-        alert("Sai tài khoản hoặc mật khẩu!");
+            if (user && username === user.username && password === user.password) {
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.href = "index.html";
+            } else {
+                alert("Sai thông tin đăng nhập!");
+            }
+        });
     }
 });
-
-// =================== GỌI HÀM CẬP NHẬT NAVBAR KHI LOAD TRANG ===================
-window.addEventListener("load", updateNavbar);
