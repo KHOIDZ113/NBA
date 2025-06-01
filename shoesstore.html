@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Basketball Shoe Store</title>
+  <link rel="stylesheet" href="./css/shoesstore.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>🏀 Giày Bóng Rổ</h1>
+    <input type="text" id="searchInput" placeholder="Tìm giày..." />
+    <ul class="nav-links">
+       <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./team&players.html">Teams & Players</a>
+            
+        </div>
+    </ul>
+    
+  </nav>
+
+  <!-- Danh sách giày -->
+  <section class="shoe-list" id="shoeList">
+    <!-- Giày sẽ được thêm bằng JS -->
+  </section>
+
+  <!-- Chi tiết giày -->
+  <section class="detail" id="detailSection" style="display:none;">
+    <img id="shoeImage" src="" alt="Hình ảnh giày" />
+    <h2 id="shoeName"></h2>
+    <p><strong>Màu sắc:</strong> <span id="shoeColor"></span></p>
+    <p><strong>Giới tính phù hợp:</strong> <span id="shoeGender"></span></p>
+    <p><strong>Size:</strong> <span id="shoeSize"></span></p>
+    <button onclick="closeDetail()">Đóng</button>
+  </section>
+
+  <script src="./js/shoestore.js"></script>
+</body>
+</html>

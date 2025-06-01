@@ -26,22 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             title: "Lakers giành vé vào vòng Playoff",
             description: "Lakers chính thức có mặt ở vòng Playoff sau chiến thắng kịch tính đêm qua.",
-            image: "https://byvn.net/Cbhc"
+            image: "https://images2.thanhnien.vn/zoom/1200_630/528068263637045248/2023/12/10/406470800356403973746108424891982175917022n-17021878736951863905483-128-0-693-1080-crop-17021881169211004601429.jpg"
         },
         {
             title: "Cuộc đua MVP nóng lên",
-            description: "Nhiều ngôi sao đang cạnh tranh quyết liệt cho danh hiệu MVP mùa này.",
-            image: "https://byvn.net/9In6"
+            description: "Shai Gilgeous-Alexander ghi 51 điểm trong chiến thắng 137-128 trước Houston Rockets sáng ngày 4/3",
+            image: "https://cdnmedia.webthethao.vn/uploads/2025-03-04/shai-gilgeous-alexander-nikola-jokic-mvp-ghi-51-diem-5.jpg"
         },
         {
-            title: "Thị trường chuyển nhượng biến động",
-            description: "Các đội bóng thực hiện những thương vụ chuyển nhượng quan trọng trước giai đoạn cuối mùa giải.",
-            image: "https://byvn.net/cXCF"
+            title: "Kỳ tích thị trường chuyển nhượng NBA 2023",
+            description: "Các đội bóng đã chi hơn 1 tỷ đô la Mỹ trong 1 tiếng đầu của thị trường chuyển nhượng cầu thủ tự do NBA năm 2023",
+            image: "https://cdnmedia.webthethao.vn/uploads/2023-07-01/chuyen-nhuong-nba-free-agency-ngay-1-cover-2.jpg"
         },
         {
-            title: "Tân binh gây ấn tượng",
-            description: "Một ngôi sao trẻ đang tạo dấu ấn mạnh mẽ ngay trong mùa giải đầu tiên tại NBA.",
-            image: "https://byvn.net/e4WR"
+            title: "Những ngôi sao tương lai của bóng rổ thế giới",
+            description: "Victor Wembanyama và Chet Holmgren là hai ngôi sao đang rất được kỳ vọng tại NBA",
+            image: "https://cdn-images.vtv.vn/thumb_w/640/562122370168008704/2023/12/31/photo-1-17040480299211341135439.jpg"
         }
     ];
 

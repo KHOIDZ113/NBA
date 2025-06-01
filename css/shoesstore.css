@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 10px 20px;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.nav-links li a:hover {
+  color: #ff4500;
+}
+
+#searchInput {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+}
+
+
+/* SHOES LIST */
+.shoe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 0 30px 30px 30px;
+}
+
+/* BUTTON FOR EACH SHOE */
+.shoe-button {
+  padding: 30px;
+  height: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoe-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* DETAIL SECTION */
+.detail {
+  background-color: #ffffff;
+  margin: 20px auto;
+  padding: 30px;
+  border-left: 6px solid #ff4500;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 600px;
+  font-size: 16px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.detail h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #1e1e1e;
+}
+
+.detail p {
+  margin: 8px 0;
+}
+
+.detail button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border: none;
+  background-color: #ff4500;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.detail button:hover {
+  background-color: #e03e00;
+}
+
+/* IMAGE DETAIL */
+.detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .shoe-button {
+    height: 120px;
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  #searchInput {
+    width: 100%;
+    max-width: none;
+  }
+}

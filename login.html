@@ -13,8 +13,8 @@
         <form id="login-form">
             <!-- Username -->
             <div class="input-group">
-                <label for="login-username">Username</label>
-                <input type="text" id="login-username" placeholder="Enter your username" required>
+                <label for="login-email">Email</label>
+                <input type="text" id="login-email" placeholder="Enter your email" required>
             </div>
 
             <!-- Password -->
@@ -25,14 +25,16 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn">Sign In</button>
+            <button type="button" class="btn" id="login-button">LogIn</button>
         </form>
 
         <!-- Link to Sign Up -->
         <p class="message">Don't have an account? <a href="./signup.html">Sign Up</a></p>
     </div>
 
-    <script src="./js/auth.js"></script>
+    <!-- <script src="./js/auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
+     <script type="module" src="./js/firebase_config.js"></script>
 </body>
 
 </html>

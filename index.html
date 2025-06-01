@@ -7,33 +7,28 @@
     <link rel="stylesheet" href="./css/indexsyle.css">
 </head>
 <body>
+
     <!-- Navbar -->
-    <div class="navbar" id="navbar">
-        <a href="./index.html">Home</a>
-        <a href="./team&players.html">Teams</a>
-        <a href="./team&players.html">Players</a>
-        <a href="./games.html">Games</a>
-
-        <!-- User Avatar (After Login) -->
-        <div class="user-avatar" id="user-avatar" style="display: none;">
-            <img src="" alt="Avatar" id="avatar-img">
-
     <div class="navbar">
         <div class="nav-links">
             <a href="./index.html">Home</a>
             <a href="./team&players.html">Teams & Players</a>
-            <a href="./games.html">Games</a>
+            <a href="./shoesstore.html">store</a>
+            
         </div>
+
         <!-- Khu vực đăng nhập hoặc avatar -->
         <div class="auth-area">
+            <!-- Khi chưa đăng nhập -->
             <div id="auth-links">
                 <a href="./login.html" class="auth-btn">Login</a>
                 <a href="./signup.html" class="auth-btn">Signup</a>
             </div>
+            <!-- Khi đã đăng nhập -->
             <div id="user-info" class="user-avatar" style="display: none;">
                 <img id="user-avatar-img" src="" alt="User Avatar">
                 <span id="user-name"></span>
-                <button id="logout-btn">Logout</button>
+                <button type="button" id="logout-btn">Logout</button>
             </div>
         </div>
     </div>
