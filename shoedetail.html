@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi Tiết Giày</title>
+  <link rel="stylesheet" href="./css/shoedetail.css">
+</head>
+<body>
+  <div class="container">
+    <img id="shoeImage" src="" alt="Giày" />
+    <div class="info">
+      <h1 id="shoeName"></h1>
+      <p><strong>Giá:</strong> <span id="shoePrice"></span></p>
+      <p><strong>Màu sắc:</strong> <span id="shoeColor"></span></p>
+      <p><strong>Giới tính:</strong> <span id="shoeGender"></span></p>
+      <p><strong>Size:</strong> <span id="shoeSize"></span></p>
+      
+      <!-- Nút quay lại -->
+      <a href="shoesstore.html" class="back-btn">⬅ Quay lại</a>
+
+      <!-- Nút mua hàng -->
+      <button class="purchase-btn" onclick="handlePurchase()">🛒 Mua hàng</button>
+    </div>
+  </div>
+
+  <script src="./js/shoedetail.js"></script>
+</body>
+</html>

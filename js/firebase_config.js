@@ -12,20 +12,26 @@ firebase.initializeApp(firebaseConfig);
 
 // Đợi DOM load xong mới add sự kiện
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   // Đăng ký tài khoản
   const signupButton = document.getElementById("signupButton");
   if (signupButton) {
     signupButton.addEventListener('click', function () {
       const email = document.getElementById("signup-email").value;
       const password = document.getElementById("signup-password").value;
+      const username = document.getElementById("signup-username").value;
+      const avatar = document.getElementById("signup-avatar").value;
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("User registered:", user);
-          alert("Đăng ký thành công! Vui lòng đăng nhập.");
-          // Ví dụ chuyển sang trang login hoặc reset form
+          alert("Đăng ký thành công! Đang chuyển về trang đăng nhập...");
+          window.location.href = "login.html";
+          return user.updateProfile({
+            displayName: username,
+            photoURL: avatar,
+          });
         })
         .catch((error) => {
           console.error(error.message);
@@ -45,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("User signed in:", user);
-          alert("Đăng nhập thành công!");
-          // Ví dụ redirect sang trang chính hoặc cập nhật UI
+          alert("Đăng nhập thành công! Đang chuyển về trang chủ...");
+          window.location.href = "index.html";
         })
         .catch((error) => {
           console.error(error.message);
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(() => {
           console.log("User signed out.");
           alert("Đã đăng xuất.");
-          // Ví dụ refresh hoặc redirect sang trang login
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error signing out:", error);

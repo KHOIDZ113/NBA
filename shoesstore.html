@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Basketball Shoe Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giày Bóng Rổ</title>
   <link rel="stylesheet" href="./css/shoesstore.css" />
 </head>
+
 <body>
   <!-- Navbar -->
   <nav class="navbar">
     <h1>🏀 Giày Bóng Rổ</h1>
-    <input type="text" id="searchInput" placeholder="Tìm giày..." />
-    <ul class="nav-links">
-       <div class="nav-links">
-            <a href="./index.html">Home</a>
-            <a href="./team&players.html">Teams & Players</a>
-            
-        </div>
-    </ul>
-    
+    <div class="nav-right">
+      <input type="text" id="searchInput" placeholder="Tìm giày..." />
+      <div class="nav-links">
+        <a href="./index.html">🏠 Home</a>
+        <a href="./team&players.html">👥 Teams & Players</a>
+      </div>
+    </div>
+    <div class="auth-area">
+      <!-- Khi chưa đăng nhập -->
+      <div id="auth-links">
+        <a href="./login.html" class="auth-btn">Login</a>
+        <a href="./signup.html" class="auth-btn">Signup</a>
+      </div>
+      <!-- Khi đã đăng nhập -->
+      <div id="user-info" class="user-avatar" style="display: none;">
+        <img id="user-avatar-img" src="" alt="User Avatar">
+        <span id="user-name"></span>
+        <button type="button" id="logout-btn">Logout</button>
+      </div>
+    </div>
+    </div>
   </nav>
 
   <!-- Danh sách giày -->
-  <section class="shoe-list" id="shoeList">
-    <!-- Giày sẽ được thêm bằng JS -->
-  </section>
+  <section class="shoe-list" id="shoeList"></section>
 
-  <!-- Chi tiết giày -->
-  <section class="detail" id="detailSection" style="display:none;">
-    <img id="shoeImage" src="" alt="Hình ảnh giày" />
-    <h2 id="shoeName"></h2>
-    <p><strong>Màu sắc:</strong> <span id="shoeColor"></span></p>
-    <p><strong>Giới tính phù hợp:</strong> <span id="shoeGender"></span></p>
-    <p><strong>Size:</strong> <span id="shoeSize"></span></p>
-    <button onclick="closeDetail()">Đóng</button>
-  </section>
-
+  <!-- Script -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
   <script src="./js/shoestore.js"></script>
+  <script src="./js/auth.js"></script>
 </body>
+
 </html>

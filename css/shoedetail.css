@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+#shoeImage {
+  width: 350px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.info {
+  flex: 1;
+}
+
+.info h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.info p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: #ddd;
+  color: #333;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #ccc;
+}
+
+.purchase-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.purchase-btn:hover {
+  background-color: #e64a19;
+}

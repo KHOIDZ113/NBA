@@ -2,17 +2,33 @@ document.addEventListener("DOMContentLoaded", () => {
     // ================== QUẢN LÝ TÀI KHOẢN ==================
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const user = JSON.parse(localStorage.getItem("user"));
-    const authLinks = document.getElementById("auth-links");
-    const userInfo = document.getElementById("user-info");
-    const userAvatarImg = document.getElementById("user-avatar-img");
-    const userName = document.getElementById("user-name");
 
-    if (isLoggedIn === "true" && user) {
-        authLinks.style.display = "none";
-        userInfo.style.display = "flex";
-        userAvatarImg.src = user.avatar;
-        userName.textContent = user.username;
-    }
+    // kiem tra user dang nhap hay chua
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            var uid = user.uid;
+            console.log("User is signed in:", user);
+            const authLinks = document.getElementById("auth-links");
+            const userInfo = document.getElementById("user-info");
+            const userAvatarImg = document.getElementById("user-avatar-img");
+            const userName = document.getElementById("user-name");
+
+
+            authLinks.style.display = "none";
+            userInfo.style.display = "flex";
+            userAvatarImg.src = user.photoURL;
+            userName.textContent = user.displayName;
+
+            // ...
+        } else {
+            // User is signed out
+            // ...
+            console.log("No user is signed in.");
+        }
+
+    })
+
+
 
     // Xử lý đăng xuất
     document.getElementById("logout-btn").addEventListener("click", () => {
@@ -38,11 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             description: "Các đội bóng đã chi hơn 1 tỷ đô la Mỹ trong 1 tiếng đầu của thị trường chuyển nhượng cầu thủ tự do NBA năm 2023",
             image: "https://cdnmedia.webthethao.vn/uploads/2023-07-01/chuyen-nhuong-nba-free-agency-ngay-1-cover-2.jpg"
         },
-        {
-            title: "Những ngôi sao tương lai của bóng rổ thế giới",
-            description: "Victor Wembanyama và Chet Holmgren là hai ngôi sao đang rất được kỳ vọng tại NBA",
-            image: "https://cdn-images.vtv.vn/thumb_w/640/562122370168008704/2023/12/31/photo-1-17040480299211341135439.jpg"
-        }
+       
     ];
 
     const newsList = document.getElementById("news-list");

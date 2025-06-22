@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EverBlue Admin</title>
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🌊 <strong>EverBlue Admin</strong></div>
+    <nav>
+      <a href="#">Lịch sử đơn hàng</a>
+      <a href="#">Đăng Xuất</a>
+      <span class="admin">Admin</span>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Quản lý sản phẩm</h1>
+
+    <div class="form-container">
+      <input type="text" id="productName" placeholder="Tên sản phẩm">
+      <input type="text" id="productPrice" placeholder="Giá">
+      <input type="text" id="productCategory" placeholder="Danh mục">
+      <input type="text" id="productImage" placeholder="Link hình ảnh">
+      <textarea id="productDescription" placeholder="Mô tả sản phẩm"></textarea>
+      <div class="buttons">
+        <button onclick="saveProduct()">💾 Lưu sản phẩm</button>
+        <button onclick="resetForm()">🎨 Làm mới</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Giá</th>
+          <th>Danh mục</th>
+          <th>Hình ảnh</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="productTable">
+        <!-- Dữ liệu sản phẩm sẽ thêm bằng JS -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="./js/ad.js"></script>
+</body>
+</html>
