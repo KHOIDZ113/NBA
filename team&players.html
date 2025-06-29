@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Teams & Players</title>
-    <link rel="stylesheet" href="./css/team&player.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NBA Teams & Players</title>
+  <link rel="stylesheet" href="./css/team&player.css" />
 </head>
+
 <body>
-    <header>
-        <!-- Logo -->
-        <a href="/">
-            <img src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png" alt="NBA Logo" class="logo">
-        </a>
 
-        <h1>NBA Teams and Players</h1>
-        <nav>
-            <ul>
-                <li><a href="#" id="show-teams">Teams</a></li>
-                <li><a href="#" id="show-players">Players</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header + Navbar -->
+  <header>
+    <!-- Logo -->
+    <div class="logo-container">
+      <a href="/">
+        <img src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png" alt="NBA Logo" class="logo" />
+      </a>
+      <h1>NBA Teams and Players</h1>
+    </div>
 
-    <main>
-        <section id="teams-section">
-            <h2>Teams</h2>
-            <!-- Thanh tìm kiếm cho các đội bóng -->
-            <input type="text" id="search-team" placeholder="Search for a team..." class="search-box">
-            <div id="teams-container"></div>
-        </section>
+    <!-- Navigation + Auth -->
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="./index.html">Home</a>
+        <a href="./team&players.html">Teams & Players</a>
+        <a href="./shoesstore.html">Store</a>
+      </div>
 
-        <section id="players-section">
-            <h2>Players</h2>
-            <!-- Thanh tìm kiếm cho các cầu thủ -->
-            <input type="text" id="search-player" placeholder="Search for a player..." class="search-box">
-            <div id="players-container"></div>
-        </section>
-    </main>
+      <div class="auth-area">
+        <!-- Chưa đăng nhập -->
+        <div id="auth-links">
+          <a href="./login.html" class="auth-btn">Login</a>
+          <a href="./signup.html" class="auth-btn">Signup</a>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 NBA. All rights reserved.</p>
-    </footer>
+        <!-- Đã đăng nhập -->
+        <div id="user-info" class="user-avatar" style="display: none;">
+          <img id="user-avatar-img" src="" alt="User Avatar" />
+          <span id="user-name"></span>
+          <button type="button" id="logout-btn" class="auth-btn">Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <script src="./js/team&players.js"></script>
+  <!-- Main content -->
+  <main>
+    <section id="teams-section">
+      <h2>Teams</h2>
+      <input type="text" id="search-team" placeholder="Search for a team..." class="search-box" />
+      <div id="teams-container"></div>
+    </section>
+
+    <section id="players-section">
+      <h2>Players</h2>
+      <input type="text" id="search-player" placeholder="Search for a player..." class="search-box" />
+      <div id="players-container"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 NBA. All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="./js/team&players.js"></script>
+  <script src="./js/auth.js"></script>
 </body>
+
 </html>

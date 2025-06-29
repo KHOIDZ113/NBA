@@ -11,28 +11,29 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <h1>🏀 Giày Bóng Rổ</h1>
-    <div class="nav-right">
-      <input type="text" id="searchInput" placeholder="Tìm giày..." />
+    <div class="navbar">
       <div class="nav-links">
-        <a href="./index.html">🏠 Home</a>
-        <a href="./team&players.html">👥 Teams & Players</a>
+        <a href="./index.html">Home</a>
+        <a href="./team&players.html">Teams & Players</a>
+        <a href="./shoesstore.html">Store</a>
       </div>
-    </div>
-    <div class="auth-area">
-      <!-- Khi chưa đăng nhập -->
-      <div id="auth-links">
-        <a href="./login.html" class="auth-btn">Login</a>
-        <a href="./signup.html" class="auth-btn">Signup</a>
+
+      <div class="nav-right">
+        <input type="text" id="searchInput" placeholder="Tìm giày..." />
+
+        <!-- Khi chưa đăng nhập -->
+        <div class="auth-area" id="auth-links">
+          <a href="./login.html" class="auth-btn">Login</a>
+          <a href="./signup.html" class="auth-btn">Signup</a>
+        </div>
+
+        <!-- Khi đã đăng nhập -->
+        <div id="user-info" class="user-avatar" style="display: none;">
+          <img id="user-avatar-img" src="" alt="User Avatar" />
+          <span id="user-name"></span>
+          <button type="button" id="logout-btn" class="auth-btn">Logout</button>
+        </div>
       </div>
-      <!-- Khi đã đăng nhập -->
-      <div id="user-info" class="user-avatar" style="display: none;">
-        <img id="user-avatar-img" src="" alt="User Avatar">
-        <span id="user-name"></span>
-        <button type="button" id="logout-btn">Logout</button>
-      </div>
-    </div>
-    </div>
   </nav>
 
   <!-- Danh sách giày -->

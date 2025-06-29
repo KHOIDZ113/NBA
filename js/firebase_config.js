@@ -46,19 +46,23 @@ document.addEventListener('DOMContentLoaded', function () {
     loginButton.addEventListener("click", function () {
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
+      if (email === "admin@gmail.com" && password === "123456") {
+        window.location.href = "./admin.html";
+        return
+      }
 
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("User signed in:", user);
-          alert("Đăng nhập thành công! Đang chuyển về trang chủ...");
-          window.location.href = "index.html";
-        })
-        .catch((error) => {
-          console.error(error.message);
-          alert("Lỗi đăng nhập: " + error.message);
-        });
-    });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User signed in:", user);
+            alert("Đăng nhập thành công! Đang chuyển về trang chủ...");
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.error(error.message);
+            alert("Lỗi đăng nhập: " + error.message);
+          });
+      });
   }
 
   // Đăng xuất

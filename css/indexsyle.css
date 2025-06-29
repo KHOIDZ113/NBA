@@ -1,9 +1,10 @@
 /* Tổng thể trang web */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color:aqua;
+    background-color: #f0f2f5;
+    color: #333;
     text-align: center;
 }
 
@@ -12,27 +13,61 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1d428a; /* Màu xanh đặc trưng của NBA */
-    padding: 10px 20px;
+    background-color: #1d428a;
+    padding: 12px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .nav-links a:hover {
-    color: #ffd700; /* vàng sáng khi hover */
+    color: #ffd700;
+    transform: scale(1.05);
 }
 
-/* Avatar & User Info */
+/* Khu vực đăng nhập / đăng ký và user info */
+.auth-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.auth-btn {
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+    background-color: white;
+    color: #1d428a;
+    transform: scale(1.05);
+}
+
+/* User avatar hiển thị khi đã đăng nhập */
 .user-avatar {
     display: flex;
     align-items: center;
@@ -40,102 +75,104 @@ body {
 }
 
 .user-avatar img {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #fff;
+    border: 2px solid white;
+    transition: transform 0.3s;
+}
+
+.user-avatar img:hover {
+    transform: scale(1.1);
 }
 
 .user-avatar span {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     color: white;
-}
-
-/* Khu vực đăng nhập / đăng ký */
-.auth-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.auth-btn {
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.auth-btn:hover {
-    background-color: white;
-    color: #1d428a;
-}
-
-/* Ẩn user info mặc định */
-#user-info {
-    display: none;
 }
 
 /* Logo */
 .nba-logo {
-    text-align: center;
-    margin: 20px 0;
+    margin: 30px 0 10px;
 }
 
 .nba-logo img {
-    width: 150px;
+    width: 160px;
+    height: auto;
 }
 
 /* Tin tức */
 .latest-news {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    margin: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    width: 85%;
+    margin: 30px auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.latest-news h2 {
+    font-size: 26px;
+    color: #1d428a;
+    margin-bottom: 20px;
 }
 
 #news-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
 }
 
+/* News item */
 .news-item {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .news-item img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     object-fit: cover;
     border-radius: 10px;
+    margin-bottom: 12px;
 }
 
 .news-item span {
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
+    font-weight: 700;
+    color: #1d428a;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .news-item button {
     background-color: #1d428a;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+
+.news-item button:hover {
+    background-color: #143263;
 }
 
 /* Modal */
@@ -149,24 +186,48 @@ body {
     background: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
     text-align: center;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content img {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .close-btn {
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
-    float: right;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* Footer */
+.footer {
+    background-color: #1d428a;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    margin-top: 40px;
+    font-size: 15px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }

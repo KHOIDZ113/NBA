@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #1d428a;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -8,7 +12,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:#1d428a;
+  background-color: var(--primary-color);
   padding: 12px 24px;
   color: white;
   flex-wrap: wrap;
@@ -44,7 +48,41 @@ body {
   text-decoration: underline;
 }
 
-/* Shoe list */
+.auth-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-btn {
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+#user-info {
+  display: none;
+}
+
+.nba-logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.nba-logo img {
+  width: 150px;
+}
+
+/* Giày */
 .shoe-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -86,42 +124,6 @@ body {
 }
 
 .shoe-info p {
-  color:#1d428a;
+  color: var(--primary-color);
   font-weight: bold;
 }
-.auth-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.auth-btn {
-    color: white;
-    background-color: transparent;
-    border: 2px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.auth-btn:hover {
-    background-color: white;
-    color: #1d428a;
-}
-
-/* Ẩn user info mặc định */
-#user-info {
-    display: none;
-}
-
-/* Logo */
-.nba-logo {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.nba-logo img {
-    width: 150px;
-}
-
