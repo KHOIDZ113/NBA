@@ -42,30 +42,60 @@ header h1 {
   font-size: 1.8rem;
 }
 
+/* ===================== NAVBAR CHUẨN ===================== */
 .navbar {
+  background-color: var(--primary-color);
+  color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  padding: 12px 30px;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 24px;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 5px;
-  background-color: var(--secondary-color);
-  transition: background-color 0.3s;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  background-color: #a00;
+  color: #ffd700;
+}
+
+.nav-links img {
+  height: 28px;
+  vertical-align: middle;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar input[type="text"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  outline: none;
 }
 
 .auth-area {
@@ -75,12 +105,14 @@ header h1 {
 }
 
 .auth-btn {
-  color: white;
   background-color: transparent;
   border: 2px solid white;
+  color: white;
   padding: 6px 12px;
   border-radius: 5px;
+  font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -99,8 +131,13 @@ header h1 {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  object-fit: cover;
   border: 2px solid white;
+  object-fit: cover;
+}
+
+.user-avatar span {
+  color: white;
+  font-weight: 600;
 }
 
 main {
@@ -184,12 +221,26 @@ footer {
 
   .navbar {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 15px;
   }
 
   .nav-links {
     flex-direction: column;
     gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar input[type="text"] {
+    width: 100%;
   }
 
   header h1 {

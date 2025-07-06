@@ -9,48 +9,29 @@ function saveProduct() {
   const status = document.getElementById("productStatus").value;
   const image = document.getElementById("productImage").value;
 
-  console.log(name,price,color,size,status,image)
+  console.log(name, price, color, size, status, image);
 
   if (!name || !price || !color || !size || !status || !image) {
     alert("Vui lòng nhập đầy đủ thông tin sản phẩm");
     return;
   }
 
-  // const product = {
-  //   // id: editId ?? Date.now(),
-  //   name,
-  //   price,
-  //   color,
-  //   size,
-  //   status,
-  //   image,
-  // };
-
-  // if (editId) {
-  //   products = products.map(p => p.id === editId ? product : p);
-  //   editId = null;
-  // } else {
-  //   products.push(product);
-  // }
-
-    db.collection("shoes").add({
-        name: name,
-        price: price,
-        color: color,
-        size: size,
-        status: status,
-        image: image,
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-
-
-  renderProducts();
-  resetForm();
+  db.collection("shoes").add({
+    name: name,
+    price: price,
+    color: color,
+    size: size,
+    status: status,
+    image: image,
+  })
+  .then((docRef) => {
+    console.log("Document written with ID: ", docRef.id);
+    renderProducts(); // Hiển thị lại danh sách sau khi thêm
+    resetForm(); // Reset form
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
 }
 
 function renderProducts() {
@@ -73,7 +54,6 @@ function renderProducts() {
           <td><img src="${product.image}" alt="shoe" width="60"/></td>
           <td>
             <button class="action-btn delete-btn" onclick="deleteProduct('${doc.id}')">Xóa</button>
-            <!-- <button class="action-btn edit-btn" onclick="editProduct('${doc.id}')">Sửa</button> -->
           </td>
         `;
 
@@ -85,11 +65,17 @@ function renderProducts() {
     });
 }
 
-
+// ✅ Tính năng xóa sản phẩm khỏi Firestore
 function deleteProduct(id) {
   if (confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
-    products = products.filter(p => p.id !== id);
-    renderProducts();
+    db.collection("shoes").doc(id).delete()
+      .then(() => {
+        console.log("Sản phẩm đã được xóa");
+        renderProducts(); // Cập nhật lại bảng sau khi xóa
+      })
+      .catch((error) => {
+        console.error("Lỗi khi xóa sản phẩm: ", error);
+      });
   }
 }
 
@@ -97,9 +83,10 @@ function editProduct(id) {
   const product = products.find(p => p.id === id);
   document.getElementById("productName").value = product.name;
   document.getElementById("productPrice").value = product.price;
-  document.getElementById("productCategory").value = product.category;
+  document.getElementById("productColor").value = product.color;
+  document.getElementById("productSize").value = product.size;
+  document.getElementById("productStatus").value = product.status;
   document.getElementById("productImage").value = product.image;
-  document.getElementById("productDescription").value = product.description;
   editId = id;
 }
 
@@ -112,4 +99,4 @@ function resetForm() {
   document.getElementById("productImage").value = "";
 }
 
-renderProducts()
+renderProducts();

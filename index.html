@@ -11,17 +11,23 @@
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
+  <!-- Navbar -->
+  <nav class="navbar">
     <div class="nav-links">
-      <a href="./index.html">Home</a>
+      <a href="./index.html">
+        <img
+          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fxaydungso.vn%2Fbai-viet-khac%2Ftrang-tai-ve-nba-logo-png-mien-phi-voi-chat-luong-cao-vi-cb.html&psig=AOvVaw1jzl_eEf0Ib194IqHf6lO4&ust=1751861991296000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjlnbe0p44DFQAAAAAdAAAAABAE"
+          alt="NBA Logo" style="height: 28px; vertical-align: middle;">
+      </a>
       <a href="./team&players.html">Teams & Players</a>
       <a href="./shoesstore.html">Store</a>
     </div>
 
-    <!-- Khu vực đăng nhập hoặc avatar -->
-    <div class="auth-area">
+    <div class="nav-right">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm..." />
+
       <!-- Khi chưa đăng nhập -->
-      <div id="auth-links">
+      <div class="auth-area" id="auth-links">
         <a href="./login.html" class="auth-btn">Login</a>
         <a href="./signup.html" class="auth-btn">Signup</a>
       </div>
@@ -33,24 +39,15 @@
         <button type="button" id="logout-btn" class="auth-btn">Logout</button>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- Logo -->
-  <div class="nba-logo">
-    <img
-      src="https://images.seeklogo.com/logo-png/24/1/nba-logo-png_seeklogo-247736.png"
-      alt="NBA Logo"
-      class="logo"
-    />
-  </div>
 
-  <!-- Tin tức mới nhất -->
+
   <section class="latest-news">
     <h2>Tin tức NBA mới nhất</h2>
     <div id="news-list"></div>
   </section>
 
-  <!-- Modal hiển thị tin tức -->
   <div id="news-modal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
@@ -60,19 +57,26 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 NBA News. All rights reserved.</p>
   </footer>
 
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
-
-  <!-- Đặt cấu hình firebase trước -->
   <script src="./js/firebase_config.js"></script>
-
-  <!-- Mã chính: quản lý người dùng và tin tức -->
   <script src="./js/main.js"></script>
+  <script>
+    // Bấm vào logo NBA sẽ chuyển về index.html
+    document.addEventListener("DOMContentLoaded", () => {
+      const logo = document.querySelector(".nav-links img");
+      if (logo) {
+        logo.style.cursor = "pointer";
+        logo.addEventListener("click", () => {
+          window.location.href = "index.html";
+        });
+      }
+    });
+  </script>
+
 </body>
 
 </html>

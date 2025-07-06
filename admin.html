@@ -9,54 +9,76 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo"> <strong>Shoestore-admin</strong></div>
-    <nav>
-      <a href="./index.html">Đăng Xuất</a>
-      <span class="admin">Admin</span>
-    </nav>
-  </header>
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="./index.html">
+        <img
+          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fxaydungso.vn%2Fbai-viet-khac%2Ftrang-tai-ve-nba-logo-png-mien-phi-voi-chat-luong-cao-vi-cb.html&psig=AOvVaw1jzl_eEf0Ib194IqHf6lO4&ust=1751861991296000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjlnbe0p44DFQAAAAAdAAAAABAE"
+          alt="NBA Logo" style="height: 28px; vertical-align: middle;">
+      </a>
+      <a href="./team&players.html">Teams & Players</a>
+      <a href="./shoesstore.html">Store</a>
+    </div>
+
+    <div class="nav-right">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm..." />
+
+      <!-- Khi chưa đăng nhập -->
+      <div class="auth-area" id="auth-links">
+        <a href="./login.html" class="auth-btn">Login</a>
+        <a href="./signup.html" class="auth-btn">Signup</a>
+      </div>
+
+      <!-- Khi đã đăng nhập -->
+      <div id="user-info" class="user-avatar" style="display: none;">
+        <img id="user-avatar-img" src="" alt="User Avatar" />
+        <span id="user-name"></span>
+        <button type="button" id="logout-btn" class="auth-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
 
   <main>
     <h1>Quản lý sản phẩm</h1>
-
     <div class="form-container">
       <input type="text" id="productName" placeholder="Tên sản phẩm">
       <input type="text" id="productPrice" placeholder="Giá">
       <input type="text" id="productColor" placeholder="Màu">
       <input type="text" id="productSize" placeholder="Size">
-      <input type="text" id="productStatus" placeholder="trạng thái:">
-      <input type="text" id="productImage" placeholder="ảnh">
-
+      <input type="text" id="productStatus" placeholder="Trạng thái">
+      <input type="text" id="productImage" placeholder="Ảnh">
       <div class="buttons">
         <button onclick="saveProduct()">💾 Lưu sản phẩm</button>
         <button onclick="resetForm()">🎨 Làm mới</button>
       </div>
     </div>
-
     <table>
       <thead>
         <tr>
           <th>Tên</th>
           <th>Giá</th>
           <th>Màu</th>
-          <th>kích thước</th>
-          <th>trạng thái</th>
-          <th>Hình ảnh</th>
+          <th>Size</th>
+          <th>Trạng thái</th>
+          <th>Ảnh</th>
+          <th>Hành động</th>
         </tr>
       </thead>
-      <tbody id="productTable">
-        <!-- Dữ liệu sản phẩm sẽ thêm bằng JS -->
-      </tbody>
+      <tbody id="productTable"></tbody>
     </table>
   </main>
-  <!-- Firebase SDK -->
+
+  <footer class="footer">
+    <p>&copy; 2025 NBA Website. All rights reserved.</p>
+  </footer>
+
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
-
-  <!-- Đặt cấu hình firebase trước -->
   <script src="./js/firebase_config.js"></script>
-
-  <script src="./js/ad.js"></script>
+  <script src="./js/admin.js"></script>
 </body>
 
 </html>

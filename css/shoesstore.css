@@ -8,19 +8,44 @@ body {
   background: #f4f4f4;
 }
 
+/* Navbar + Avatar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-color);
-  padding: 12px 24px;
-  color: white;
+  background-color: #1d428a;
+  padding: 12px 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   flex-wrap: wrap;
 }
 
-.navbar h1 {
-  font-size: 24px;
-  margin: 0;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+/* Logo NBA trong nav */
+.nav-links img {
+  height: 28px;
+  vertical-align: middle;
 }
 
 .nav-right {
@@ -29,19 +54,45 @@ body {
   gap: 12px;
 }
 
-#searchInput {
+.navbar input[type="text"] {
   padding: 6px 10px;
   border-radius: 6px;
   border: none;
-  width: 200px;
+  font-size: 14px;
 }
 
-.nav-links a {
+/* Login, Signup, Logout */
+.auth-btn {
+  background-color: #c8102e;
   color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
   text-decoration: none;
-  margin-left: 12px;
-  font-weight: bold;
-  transition: 0.3s;
+}
+.auth-btn:hover {
+  background-color: #a50e24;
+}
+
+/* Avatar user */
+.user-avatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.user-avatar span {
+  font-weight: 600;
+  color: white;
 }
 
 .nav-links a:hover {
