@@ -11,7 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -22,7 +22,6 @@ body {
   min-height: 100vh;
 }
 
-/* ===== HEADER ===== */
 header {
   background-color: var(--primary-color);
   padding: 15px 5%;
@@ -43,7 +42,6 @@ header h1 {
   font-size: 1.8rem;
 }
 
-/* ===== NAVBAR ===== */
 .navbar {
   display: flex;
   align-items: center;
@@ -105,16 +103,32 @@ header h1 {
   border: 2px solid white;
 }
 
-/* ===== MAIN SECTIONS ===== */
 main {
   padding: 30px 5%;
   flex: 1;
 }
 
-main h2 {
+.switch-buttons {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.switch-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 0 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  background-color: white;
   color: var(--primary-color);
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch-btn.active,
+.switch-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .search-box {
@@ -128,44 +142,31 @@ main h2 {
   display: block;
 }
 
-/* ==== Teams / Players Container ==== */
 #teams-container,
 #players-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  justify-content: center;
 }
 
-/* ==== Card Styling ==== */
-.player-card, .team-card {
+.team-button,
+.player-button {
   background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-
-.player-card:hover,
-.team-card:hover {
-  transform: translateY(-5px);
-}
-
-.player-card img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.player-card h3 {
+  border: 2px solid var(--primary-color);
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
   color: var(--primary-color);
-  font-size: 1.1rem;
+  transition: 0.3s;
 }
 
-/* ==== Footer ==== */
+.team-button:hover,
+.player-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
 footer {
   background-color: var(--primary-color);
   color: white;
@@ -175,7 +176,6 @@ footer {
   font-size: 0.95rem;
 }
 
-/* ==== Responsive ==== */
 @media (max-width: 768px) {
   header {
     flex-direction: column;

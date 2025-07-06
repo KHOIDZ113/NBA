@@ -10,6 +10,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+const db = firebase.firestore();
+
+
 // Đợi DOM load xong mới add sự kiện
 document.addEventListener('DOMContentLoaded', function () {
 

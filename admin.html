@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EverBlue Admin</title>
   <link rel="stylesheet" href="./css/admin.css">
 </head>
+
 <body>
   <header>
     <div class="logo"> <strong>Shoestore-admin</strong></div>
     <nav>
-      <a href="#">Lịch sử đơn hàng</a>
       <a href="./index.html">Đăng Xuất</a>
       <span class="admin">Admin</span>
     </nav>
@@ -22,10 +23,11 @@
     <div class="form-container">
       <input type="text" id="productName" placeholder="Tên sản phẩm">
       <input type="text" id="productPrice" placeholder="Giá">
-      <input type="text" id="productcolor" placeholder="Màu">
-      <input type="text" id="productsize" placeholder="Size">
-      <input type="text" id="productstatus" placeholder="trạng thái:">
-      
+      <input type="text" id="productColor" placeholder="Màu">
+      <input type="text" id="productSize" placeholder="Size">
+      <input type="text" id="productStatus" placeholder="trạng thái:">
+      <input type="text" id="productImage" placeholder="ảnh">
+
       <div class="buttons">
         <button onclick="saveProduct()">💾 Lưu sản phẩm</button>
         <button onclick="resetForm()">🎨 Làm mới</button>
@@ -37,9 +39,10 @@
         <tr>
           <th>Tên</th>
           <th>Giá</th>
-          <th>Danh mục</th>
+          <th>Màu</th>
+          <th>kích thước</th>
+          <th>trạng thái</th>
           <th>Hình ảnh</th>
-          <th>Thao tác</th>
         </tr>
       </thead>
       <tbody id="productTable">
@@ -47,7 +50,13 @@
       </tbody>
     </table>
   </main>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
+
+  <!-- Đặt cấu hình firebase trước -->
+  <script src="./js/firebase_config.js"></script>
 
   <script src="./js/ad.js"></script>
 </body>
+
 </html>

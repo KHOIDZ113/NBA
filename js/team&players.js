@@ -8,117 +8,104 @@ const showPlayersBtn = document.getElementById('show-players');
 const searchTeamInput = document.getElementById('search-team');
 const searchPlayerInput = document.getElementById('search-player');
 
-// Lấy danh sách đội bóng
 let teamsList = [];
-function fetchTeams() {
-    fetch('https://api.balldontlie.io/v1/teams', {
-        headers: { 'Authorization': apiKey }
-    })
-    .then(response => response.json())
-    .then(data => {
-        teamsList = data.data;
-        displayTeams(teamsList);
-    })
-    .catch(error => console.error('Error fetching teams:', error));
-}
-
-// Lấy danh sách cầu thủ
 let playersList = [];
-function fetchPlayers() {
-    fetch('https://api.balldontlie.io/v1/players', {
-        headers: { 'Authorization': apiKey }
-    })
-    .then(response => response.json())
+
+function fetchTeams() {
+  fetch('https://api.balldontlie.io/v1/teams', {
+    headers: { 'Authorization': apiKey }
+  })
+    .then(res => res.json())
     .then(data => {
-        playersList = data.data;
-        displayPlayers(playersList);
+      teamsList = data.data;
+      displayTeams(teamsList);
     })
-    .catch(error => console.error('Error fetching players:', error));
+    .catch(err => console.error('Error fetching teams:', err));
 }
 
-// Hiển thị đội bóng bằng nút và đầy đủ thông tin khi bấm vào
+function fetchPlayers() {
+  fetch('https://api.balldontlie.io/v1/players', {
+    headers: { 'Authorization': apiKey }
+  })
+    .then(res => res.json())
+    .then(data => {
+      playersList = data.data;
+      displayPlayers(playersList);
+    })
+    .catch(err => console.error('Error fetching players:', err));
+}
+
 function displayTeams(teams) {
-    teamsContainer.innerHTML = ''; 
-    teams.forEach(team => {
-        const teamElement = document.createElement('button');
-        teamElement.classList.add('team-button');
-        teamElement.textContent = team.full_name;
-        
-        teamElement.addEventListener('click', () => {
-            alert(`
-                🏀 Đội: ${team.full_name}
-                📍 Thành phố: ${team.city}
-                🏆 Tên viết tắt: ${team.abbreviation}
-                🎯 Hội nghị: ${team.conference}
-                🌍 Khu vực: ${team.division}
-            `);
-        });
-
-        teamsContainer.appendChild(teamElement);
-    });
+  teamsContainer.innerHTML = '';
+  teams.forEach(team => {
+    const btn = document.createElement('button');
+    btn.className = 'team-button';
+    btn.textContent = team.full_name;
+    btn.onclick = () => {
+      alert(`
+🏀 Team: ${team.full_name}
+📍 City: ${team.city}
+🔤 Abbreviation: ${team.abbreviation}
+🏆 Conference: ${team.conference}
+🌍 Division: ${team.division}
+      `);
+    };
+    teamsContainer.appendChild(btn);
+  });
 }
 
-// Hiển thị cầu thủ bằng nút và đầy đủ thông tin khi bấm vào
 function displayPlayers(players) {
-    playersContainer.innerHTML = '';  
-    players.forEach(player => {
-        const playerElement = document.createElement('button');
-        playerElement.classList.add('player-button');
-        playerElement.textContent = `${player.first_name} ${player.last_name}`;
-        
-        playerElement.addEventListener('click', () => {
-            alert(`
-                👤 Cầu thủ: ${player.first_name} ${player.last_name}
-                🏀 Đội: ${player.team.full_name}
-                📏 Chiều cao: ${player.height_feet ? player.height_feet + "'" : "N/A"} ${player.height_inches ? player.height_inches + '"' : ""}
-                ⚖️ Cân nặng: ${player.weight_pounds ? player.weight_pounds + " lbs" : "N/A"}
-                🔢 Số áo: ${player.jersey_number || "N/A"}
-                🏅 Vị trí: ${player.position || "N/A"}
-            `);
-        });
-
-        playersContainer.appendChild(playerElement);
-    });
+  playersContainer.innerHTML = '';
+  players.forEach(player => {
+    const btn = document.createElement('button');
+    btn.className = 'player-button';
+    btn.textContent = `${player.first_name} ${player.last_name}`;
+    btn.onclick = () => {
+      alert(`
+👤 Player: ${player.first_name} ${player.last_name}
+🏀 Team: ${player.team.full_name}
+📏 Height: ${player.height_feet || 'N/A'}' ${player.height_inches || ''}
+⚖️ Weight: ${player.weight_pounds || 'N/A'} lbs
+🎽 Position: ${player.position || 'N/A'}
+      `);
+    };
+    playersContainer.appendChild(btn);
+  });
 }
 
-// Lọc đội bóng theo tên
-searchTeamInput.addEventListener('input', function() {
-    const query = searchTeamInput.value.toLowerCase();
-    const filteredTeams = teamsList.filter(team => team.full_name.toLowerCase().includes(query));
-    displayTeams(filteredTeams);
+searchTeamInput.addEventListener('input', () => {
+  const query = searchTeamInput.value.toLowerCase();
+  const filtered = teamsList.filter(t => t.full_name.toLowerCase().includes(query));
+  displayTeams(filtered);
 });
 
-// Lọc cầu thủ theo tên
-searchPlayerInput.addEventListener('input', function() {
-    const query = searchPlayerInput.value.toLowerCase();
-    const filteredPlayers = playersList.filter(player => {
-        const playerName = `${player.first_name} ${player.last_name}`.toLowerCase();
-        return playerName.includes(query);
-    });
-    displayPlayers(filteredPlayers);
+searchPlayerInput.addEventListener('input', () => {
+  const query = searchPlayerInput.value.toLowerCase();
+  const filtered = playersList.filter(p =>
+    `${p.first_name} ${p.last_name}`.toLowerCase().includes(query)
+  );
+  displayPlayers(filtered);
 });
 
-// Chuyển đổi giữa đội bóng và cầu thủ
-showTeamsBtn.addEventListener('click', () => {
-    teamsSection.style.display = 'block';
-    playersSection.style.display = 'none';
-    fetchTeams();
-    showTeamsBtn.classList.add('active');
-    showPlayersBtn.classList.remove('active');
-});
+showTeamsBtn.onclick = () => {
+  teamsSection.style.display = 'block';
+  playersSection.style.display = 'none';
+  showTeamsBtn.classList.add('active');
+  showPlayersBtn.classList.remove('active');
+  fetchTeams();
+};
 
-showPlayersBtn.addEventListener('click', () => {
-    playersSection.style.display = 'block';
-    teamsSection.style.display = 'none';
-    fetchPlayers();
-    showPlayersBtn.classList.add('active');
-    showTeamsBtn.classList.remove('active');
-});
+showPlayersBtn.onclick = () => {
+  playersSection.style.display = 'block';
+  teamsSection.style.display = 'none';
+  showPlayersBtn.classList.add('active');
+  showTeamsBtn.classList.remove('active');
+  fetchPlayers();
+};
 
-// Mặc định hiển thị đội bóng khi trang được tải
 window.onload = () => {
-    fetchTeams();
-    teamsSection.style.display = 'block';
-    playersSection.style.display = 'none';
-    showTeamsBtn.classList.add('active');
+  fetchTeams();
+  teamsSection.style.display = 'block';
+  playersSection.style.display = 'none';
+  showTeamsBtn.classList.add('active');
 };
