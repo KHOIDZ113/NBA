@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EverBlue Admin</title>
+  <title> Admin</title>
   <link rel="stylesheet" href="./css/admin.css">
 </head>
 
@@ -21,18 +21,21 @@
       <a href="./shoesstore.html">Store</a>
     </div>
 
-    <!-- Khi chưa đăng nhập -->
-    <div class="auth-area" id="auth-links">
-      <a href="./login.html" class="auth-btn">Login</a>
-      <a href="./signup.html" class="auth-btn">Signup</a>
-    </div>
+    <div class="nav-right">
 
-    <!-- Khi đã đăng nhập -->
-    <div id="user-info" class="user-avatar" style="display: none;">
-      <img id="user-avatar-img" src="" alt="User Avatar" />
-      <span id="user-name"></span>
-      <button type="button" id="logout-btn" class="auth-btn">Logout</button>
-    </div>
+
+      <!-- Khi chưa đăng nhập -->
+      <div class="auth-area" id="auth-links">
+        <a href="./login.html" class="auth-btn">Login</a>
+        <a href="./signup.html" class="auth-btn">Signup</a>
+      </div>
+
+      <!-- Khi đã đăng nhập -->
+      <div id="user-info" class="user-avatar" style="display: none;">
+        <img id="user-avatar-img" src="" alt="User Avatar" />
+        <span id="user-name"></span>
+        <button type="button" id="logout-btn" class="auth-btn">Logout</button>
+      </div>
     </div>
   </nav>
 

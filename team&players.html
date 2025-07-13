@@ -10,8 +10,6 @@
 
 <body>
 
-  <!-- Navbar -->
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-links">
       <a href="./index.html">
@@ -22,22 +20,24 @@
       <a href="./product.html">Product</a>
     </div>
 
+    <div class="nav-right">
+    
 
+      <!-- Khi chưa đăng nhập -->
+      <div class="auth-area" id="auth-links">
+        <a href="./login.html" class="auth-btn">Login</a>
+        <a href="./signup.html" class="auth-btn">Signup</a>
+      </div>
 
-    <!-- Khi chưa đăng nhập -->
-    <div class="auth-area" id="auth-links">
-      <a href="./login.html" class="auth-btn">Login</a>
-      <a href="./signup.html" class="auth-btn">Signup</a>
-    </div>
-
-    <!-- Khi đã đăng nhập -->
-    <div id="user-info" class="user-avatar" style="display: none;">
-      <img id="user-avatar-img" src="" alt="User Avatar" />
-      <span id="user-name"></span>
-      <button type="button" id="logout-btn" class="auth-btn">Logout</button>
-    </div>
+      <!-- Khi đã đăng nhập -->
+      <div id="user-info" class="user-avatar" style="display: none;">
+        <img id="user-avatar-img" src="" alt="User Avatar" />
+        <span id="user-name"></span>
+        <button type="button" id="logout-btn" class="auth-btn">Logout</button>
+      </div>
     </div>
   </nav>
+
 
   <main>
     <div class="switch-buttons">
@@ -60,8 +60,11 @@
     <p>&copy; 2025 NBA Website. All rights reserved.</p>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-compat.js"></script>
+  <script src="./js/firebase_config.js"></script>
   <script src="./js/team&players.js"></script>
   <script src="./js/auth.js"></script>
+  <script src="./js/main.js"></script>
 
 
   <script>
