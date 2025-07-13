@@ -199,3 +199,13 @@ td img {
 .nba-logo img {
   width: 160px;
 }
+
+/* Footer */
+.footer {
+  background-color: #1d428a;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  margin-top: 40px;
+  font-size: 15px;
+}

@@ -109,3 +109,20 @@ window.onload = () => {
   playersSection.style.display = 'none';
   showTeamsBtn.classList.add('active');
 };
+
+firebase.auth().onAuthStateChanged((user) => {
+  const authLinks = document.getElementById("auth-links");
+  const userInfo = document.getElementById("user-info");
+  const userAvatarImg = document.getElementById("user-avatar-img");
+  const userName = document.getElementById("user-name");
+
+  if (user) {
+    authLinks.style.display = "none";
+    userInfo.style.display = "flex";
+    userAvatarImg.src = user.photoURL || "https://via.placeholder.com/42";
+    userName.textContent = user.displayName || "User";
+  } else {
+    authLinks.style.display = "flex";
+    userInfo.style.display = "none";
+  }
+});
